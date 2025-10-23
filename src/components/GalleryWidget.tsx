@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, HelpCircle, Grid3x3 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export const GalleryWidget = () => {
@@ -38,62 +38,73 @@ export const GalleryWidget = () => {
 
   return (
     <div className="bg-widget rounded-[28px] shadow-widget border border-widget-border p-6 transition-all duration-300 hover:shadow-widget-lg">
-      <div className="flex items-center justify-between mb-6">
-        <h2 className="text-xl font-semibold px-8 py-3 bg-[hsl(var(--tab-active))] rounded-2xl">
-          Gallery
-        </h2>
-        <div className="flex items-center gap-3">
-          <button
-            onClick={handleAddImage}
-            className="px-6 py-2.5 rounded-full bg-secondary hover:bg-muted transition-colors duration-300 text-sm font-medium shadow-md flex items-center gap-2"
-          >
-            <span className="text-lg">+</span>
-            ADD IMAGE
+      <div className="flex items-start gap-4 mb-8">
+        <div className="flex flex-col gap-3 pt-2">
+          <button className="w-10 h-10 rounded-full bg-muted/30 hover:bg-muted/50 flex items-center justify-center transition-colors">
+            <HelpCircle className="w-5 h-5 text-muted-foreground" />
           </button>
-          <input
-            ref={fileInputRef}
-            type="file"
-            accept="image/*"
-            onChange={handleFileChange}
-            className="hidden"
-          />
-          <button
-            onClick={handlePrevious}
-            disabled={currentIndex === 0}
-            className={cn(
-              "w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300",
-              currentIndex === 0
-                ? "bg-muted/50 text-muted-foreground cursor-not-allowed"
-                : "bg-secondary hover:bg-muted shadow-md"
-            )}
-          >
-            <ChevronLeft className="w-5 h-5" />
+          <button className="w-10 h-10 rounded-full bg-muted/30 hover:bg-muted/50 flex items-center justify-center transition-colors">
+            <Grid3x3 className="w-5 h-5 text-muted-foreground" />
           </button>
-          <button
-            onClick={handleNext}
-            disabled={currentIndex >= images.length - 3}
-            className={cn(
-              "w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300",
-              currentIndex >= images.length - 3
-                ? "bg-muted/50 text-muted-foreground cursor-not-allowed"
-                : "bg-primary hover:bg-primary/90 shadow-md"
-            )}
-          >
-            <ChevronRight className="w-5 h-5" />
-          </button>
+        </div>
+
+        <div className="flex-1 flex items-center justify-between">
+          <h2 className="text-xl font-semibold px-8 py-3 bg-black/40 rounded-[20px]">
+            Gallery
+          </h2>
+          <div className="flex items-center gap-3">
+            <button
+              onClick={handleAddImage}
+              className="px-6 py-3 rounded-[20px] bg-muted/30 hover:bg-muted/50 transition-all duration-300 text-sm font-medium flex items-center gap-2 border border-muted/20"
+            >
+              <span className="text-lg">+</span>
+              ADD IMAGE
+            </button>
+            <input
+              ref={fileInputRef}
+              type="file"
+              accept="image/*"
+              onChange={handleFileChange}
+              className="hidden"
+            />
+            <button
+              onClick={handlePrevious}
+              disabled={currentIndex === 0}
+              className={cn(
+                "w-12 h-12 rounded-[20px] flex items-center justify-center transition-all duration-300 border border-muted/20",
+                currentIndex === 0
+                  ? "bg-muted/30 text-muted-foreground cursor-not-allowed grayscale"
+                  : "bg-muted/30 hover:bg-primary grayscale hover:grayscale-0"
+              )}
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+            <button
+              onClick={handleNext}
+              disabled={currentIndex >= images.length - 3}
+              className={cn(
+                "w-12 h-12 rounded-[20px] flex items-center justify-center transition-all duration-300 border border-muted/20",
+                currentIndex >= images.length - 3
+                  ? "bg-muted/30 text-muted-foreground cursor-not-allowed grayscale"
+                  : "bg-primary/80 hover:bg-primary grayscale hover:grayscale-0"
+              )}
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
+          </div>
         </div>
       </div>
 
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-3 gap-4 ml-14">
         {visibleImages.map((image, index) => (
           <div
             key={currentIndex + index}
-            className="aspect-square rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 group"
+            className="aspect-square rounded-2xl overflow-hidden shadow-md group cursor-pointer"
           >
             <img
               src={image}
               alt={`Gallery image ${currentIndex + index + 1}`}
-              className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-125 transition-all duration-500 cursor-pointer"
+              className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-110 group-hover:rotate-2 group-hover:shadow-2xl"
             />
           </div>
         ))}
