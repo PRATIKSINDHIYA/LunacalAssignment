@@ -81,9 +81,8 @@ export const AboutWidget = () => {
             {/* Animated background slider */}
             <div 
               className={cn(
-                "absolute top-1.5 bottom-1.5 rounded-[20px] transition-all duration-500 ease-out",
-                "shadow-[0_8px_32px_rgba(0,0,0,0.8)] drop-shadow-[0_4px_16px_rgba(0,0,0,0.6)]",
-                "shadow-[0_0_20px_rgba(255,255,255,0.3)]",
+                "absolute top-1.5 bottom-1.5 rounded-[24px] transition-all duration-500 ease-out",
+                "shadow-[0_8px_32px_rgba(0,0,0,0.9)] drop-shadow-[0_4px_16px_rgba(0,0,0,0.8)]",
                 activeTab === "About Me" && "left-1.5 w-[calc(33.333%-4px)]",
                 activeTab === "Experiences" && "left-[calc(33.333%+2px)] w-[calc(33.333%-4px)]",
                 activeTab === "Recommended" && "left-[calc(66.666%+2px)] w-[calc(33.333%-4px)]"
