@@ -1,21 +1,28 @@
 import { AboutWidget } from "@/components/AboutWidget";
 import { GalleryWidget } from "@/components/GalleryWidget";
+import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
+import { Sidebar } from "@/components/Sidebar";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-8 py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-          {/* Left side - Empty for now */}
-          <div className="hidden lg:block" />
-          
-          {/* Right side - Widgets */}
-          <div className="space-y-8">
+      <Navbar />
+      <Sidebar />
+      
+      <main className="container mx-auto px-8 pt-32 pb-12">
+        <div className="max-w-5xl mx-auto space-y-8">
+          <section id="about">
             <AboutWidget />
+          </section>
+          
+          <section id="gallery">
             <GalleryWidget />
-          </div>
+          </section>
         </div>
-      </div>
+      </main>
+      
+      <Footer />
     </div>
   );
 };

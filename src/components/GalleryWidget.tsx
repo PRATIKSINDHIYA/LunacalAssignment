@@ -5,8 +5,8 @@ import { cn } from "@/lib/utils";
 export const GalleryWidget = () => {
   const [images, setImages] = useState<string[]>([
     "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=400&fit=crop",
-    "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=400&fit=crop&sat=-100",
-    "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=400&fit=crop&sat=-100&brightness=0.8"
+    "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=400&h=400&fit=crop",
+    "https://images.unsplash.com/photo-1449844908441-8829872d2607?w=400&h=400&fit=crop"
   ]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -88,12 +88,12 @@ export const GalleryWidget = () => {
         {visibleImages.map((image, index) => (
           <div
             key={currentIndex + index}
-            className="aspect-square rounded-2xl overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
+            className="aspect-square rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 group"
           >
             <img
               src={image}
               alt={`Gallery image ${currentIndex + index + 1}`}
-              className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+              className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-125 transition-all duration-500 cursor-pointer"
             />
           </div>
         ))}
