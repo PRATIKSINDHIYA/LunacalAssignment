@@ -24,28 +24,28 @@ export const AboutWidget = () => {
   };
 
   return (
-    <div className="bg-widget rounded-[28px] shadow-widget border border-widget-border p-6 transition-all duration-300 hover:shadow-widget-lg">
-      <div className="flex items-start gap-4 mb-6">
-        <div className="flex flex-col gap-3 pt-2">
-          <button className="w-10 h-10 rounded-full bg-muted/30 hover:bg-muted/50 flex items-center justify-center transition-colors">
+    <div className="bg-widget rounded-[28px] shadow-widget border border-widget-border p-8 transition-all duration-300 hover:shadow-widget-lg">
+      <div className="flex items-start gap-6 mb-8">
+        <div className="flex flex-col gap-4 pt-2">
+          <button className="w-11 h-11 rounded-full bg-muted/30 hover:bg-muted/50 flex items-center justify-center transition-all duration-300 hover:scale-110">
             <HelpCircle className="w-5 h-5 text-muted-foreground" />
           </button>
-          <button className="w-10 h-10 rounded-full bg-muted/30 hover:bg-muted/50 flex items-center justify-center transition-colors">
+          <button className="w-11 h-11 rounded-full bg-muted/30 hover:bg-muted/50 flex items-center justify-center transition-all duration-300 hover:scale-110">
             <Grid3x3 className="w-5 h-5 text-muted-foreground" />
           </button>
         </div>
         
-        <div className="flex-1">
-          <div className="bg-black/40 rounded-[20px] p-1 inline-flex gap-1">
+        <div className="flex-1 flex justify-center">
+          <div className="bg-black/40 rounded-[20px] p-1.5 inline-flex gap-1">
             {tabs.map((tab) => (
               <button
                 key={tab}
                 onClick={() => handleTabChange(tab)}
                 className={cn(
-                  "px-8 py-3 rounded-[16px] font-medium text-base transition-all duration-300",
+                  "px-8 py-3 rounded-[16px] font-medium text-base transition-all duration-500",
                   activeTab === tab
-                    ? "bg-[#2A2A2A] text-foreground shadow-md"
-                    : "text-muted-foreground hover:text-foreground"
+                    ? "bg-[#2A2A2A] text-foreground shadow-lg scale-105"
+                    : "text-muted-foreground hover:text-foreground hover:scale-105"
                 )}
               >
                 {tab}
@@ -55,13 +55,13 @@ export const AboutWidget = () => {
         </div>
       </div>
       
-      <div className="h-[180px] overflow-y-auto pr-4 custom-scrollbar ml-14 relative">
+      <div className="h-[200px] overflow-y-auto pr-4 custom-scrollbar ml-[76px] relative">
         <div 
           key={activeTab}
           className={cn(
             "text-muted-foreground leading-relaxed whitespace-pre-line",
-            "animate-in fade-in slide-in-from-right-4 duration-500",
-            direction === 'left' && "slide-in-from-left-4"
+            "animate-in fade-in duration-700",
+            direction === 'right' ? "slide-in-from-right-8" : "slide-in-from-left-8"
           )}
         >
           {content[activeTab]}

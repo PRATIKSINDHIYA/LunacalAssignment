@@ -75,4 +75,8 @@ All colors MUST be HSL.
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
     @apply bg-muted-foreground;
   }
+
+  .perspective-1000 {
+    perspective: 1000px;
+  }
 }
