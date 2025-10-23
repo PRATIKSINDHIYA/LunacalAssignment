@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { ChevronLeft, ChevronRight, HelpCircle, Grid3x3 } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export const GalleryWidget = () => {
@@ -39,15 +39,6 @@ export const GalleryWidget = () => {
   return (
     <div className="bg-widget rounded-[28px] shadow-widget border border-widget-border p-8 transition-all duration-300 hover:shadow-widget-lg">
       <div className="flex items-start gap-6 mb-6">
-        <div className="flex flex-col gap-4 pt-2">
-          <button className="w-11 h-11 rounded-full bg-muted/30 hover:bg-muted/50 flex items-center justify-center transition-all duration-300 hover:scale-110">
-            <HelpCircle className="w-5 h-5 text-muted-foreground" />
-          </button>
-          <button className="w-11 h-11 rounded-full bg-muted/30 hover:bg-muted/50 flex items-center justify-center transition-all duration-300 hover:scale-110">
-            <Grid3x3 className="w-5 h-5 text-muted-foreground" />
-          </button>
-        </div>
-
         <div className="flex-1">
           <div className="flex items-center justify-between mb-8">
             <h2 className="text-xl font-semibold px-8 py-3 bg-black/40 rounded-[20px]">
@@ -56,7 +47,8 @@ export const GalleryWidget = () => {
             <div className="flex items-center gap-3">
               <button
                 onClick={handleAddImage}
-                className="px-6 py-3 rounded-[20px] bg-muted/30 hover:bg-muted/50 hover:scale-105 transition-all duration-300 text-sm font-medium flex items-center gap-2 border border-muted/20"
+                className="px-6 py-3 rounded-[20px] text-sm font-medium flex items-center gap-2 border border-muted/20 shadow-lg transform -translate-y-1"
+                style={{ backgroundColor: 'hsl(0deg 0% 0% / 30%)' }}
               >
                 <span className="text-lg">+</span>
                 ADD IMAGE
@@ -72,11 +64,12 @@ export const GalleryWidget = () => {
                 onClick={handlePrevious}
                 disabled={currentIndex === 0}
                 className={cn(
-                  "w-12 h-12 rounded-[20px] flex items-center justify-center transition-all duration-300 border border-muted/20",
+                  "w-12 h-12 rounded-[20px] flex items-center justify-center border border-muted/20 shadow-lg transform -translate-y-1",
                   currentIndex === 0
-                    ? "bg-muted/30 text-muted-foreground cursor-not-allowed grayscale opacity-50"
-                    : "bg-muted/30 hover:bg-primary grayscale hover:grayscale-0 hover:scale-110"
+                    ? "text-muted-foreground cursor-not-allowed grayscale opacity-50"
+                    : ""
                 )}
+                style={{ backgroundColor: 'hsl(0deg 0% 0% / 30%)' }}
               >
                 <ChevronLeft className="w-5 h-5" />
               </button>
@@ -84,11 +77,12 @@ export const GalleryWidget = () => {
                 onClick={handleNext}
                 disabled={currentIndex >= images.length - 3}
                 className={cn(
-                  "w-12 h-12 rounded-[20px] flex items-center justify-center transition-all duration-300 border border-muted/20",
+                  "w-12 h-12 rounded-[20px] flex items-center justify-center border border-muted/20 shadow-lg transform -translate-y-1",
                   currentIndex >= images.length - 3
-                    ? "bg-muted/30 text-muted-foreground cursor-not-allowed grayscale opacity-50"
-                    : "bg-primary/80 hover:bg-primary grayscale hover:grayscale-0 hover:scale-110"
+                    ? "text-muted-foreground cursor-not-allowed grayscale opacity-50"
+                    : ""
                 )}
+                style={{ backgroundColor: 'hsl(0deg 0% 0% / 30%)' }}
               >
                 <ChevronRight className="w-5 h-5" />
               </button>
